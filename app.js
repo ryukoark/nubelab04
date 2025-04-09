@@ -28,3 +28,6 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
