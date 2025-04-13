@@ -19,9 +19,9 @@
   <main>
     <h2>Lista de Productos</h2>
     <ul>
-      <li>Producto 1</li>
-      <li>Producto 2</li>
-      <li>Producto 3</li>
+      <% productos.forEach(producto => { %>
+        <li><%= producto.nombre %> - S/ <%= producto.precio %></li>
+      <% }) %>
     </ul>
   </main>
   <footer>

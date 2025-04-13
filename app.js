@@ -15,6 +15,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 const clientesRouter = require('./routes/clientes');
 const productosRouter = require('./routes/productos');
 
+const setupDB = require('./setup');
+setupDB();
+
 app.use('/clientes', clientesRouter);
 app.use('/productos', productosRouter);
 

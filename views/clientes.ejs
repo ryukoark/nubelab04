@@ -19,9 +19,9 @@
   <main>
     <h2>Lista de Clientes</h2>
     <ul>
-      <li>Cliente 1</li>
-      <li>Cliente 2</li>
-      <li>Cliente 3</li>
+      <% clientes.forEach(cliente => { %>
+        <li><%= cliente.nombre %> - <%= cliente.email %></li>
+      <% }) %>
     </ul>
   </main>
   <footer>
