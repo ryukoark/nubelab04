@@ -1,21 +1,10 @@
 version: '3.8'
-services:
-  app:
-    build: .
-    ports:
-      - "9000:9000"
-    depends_on:
-      - db
-    environment:
-      - DB_HOST=db
-      - DB_USER=root
-      - DB_PASSWORD=example
-      - DB_NAME=testdb
-    volumes:
-      - .:/app
 
+services:
   db:
     image: mysql:8
+    container_name: mysql-lab04
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: example
       MYSQL_DATABASE: testdb
@@ -23,6 +12,22 @@ services:
       - "3306:3306"
     volumes:
       - dbdata:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: lab04-app
+    restart: always
+    ports:
+      - "9000:9000"
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: example
+      DB_NAME: testdb
+    depends_on:
+      - db
+    volumes:
+      - .:/app
 
 volumes:
   dbdata:
